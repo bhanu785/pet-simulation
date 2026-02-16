@@ -10,6 +10,10 @@ class PetState(BaseModel):
     energy: int
     health: int
     age: int
+
+@app.get("/")
+def root():
+    return {"status": "backend is running"}
 pet = {
     "hunger": 50,
     "happiness": 50,
@@ -17,12 +21,10 @@ pet = {
     "health": 100,
     "age": 0
 }
-@app.get("/")
-def root():
-    return {"status": "backend is running"}
 @app.get("/pet")
 def get_pet():
     return pet
+
 @app.post("/pet")
 def update_pet(state: PetState):
     pet["hunger"] = state.hunger

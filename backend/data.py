@@ -1,0 +1,1 @@
+# has all constants like prices, max and min values and other stuff
