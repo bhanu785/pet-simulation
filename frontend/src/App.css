@@ -46,6 +46,10 @@
   border: black solid 3px;
 }
 
+.catButton:focus {
+  border: black solid 5px;
+}
+
 .dogButton {
   position: fixed;
   top: 400px;
@@ -62,6 +66,10 @@
 .dogButton:hover {
   background-color: lightyellow;
   border: black solid 3px;
+}
+
+.dogButton:focus {
+  border: black solid 5px;
 }
 
 .petNameLabel {
@@ -81,7 +89,7 @@
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 40px;
   background-color: white;
-  border: black solid 1px;
+  border: black solid 2px;
   color: black;
   width: 400px;
   height: 45px;
