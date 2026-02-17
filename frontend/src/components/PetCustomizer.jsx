@@ -2,18 +2,17 @@
 import { useState } from 'react';
 import catIdle from '../assets/spriteSheets/cat/Idle (1).png';
 import dogIdle from '../assets/spriteSheets/dog/Idle (1).png';
-function PetCustomizer() {
+function PetCustomizer({ onStart }) { // function that returns the pet customizer page, takes in onStart as a prop to pass the pet info to the dashboard
     const [petType, setPetType] = useState("");
     const [petName, setPetName] = useState("");
 
     function selectedPet(e) {
         e.preventDefault();
-        if (!petType || petName.trim() === "") {
-            alert("Please select a pet and enter a name.");
-            return;
-        }
-        alert('Pet Type: ' + petType + '\n' + 'Pet Name: ' + petName);
+        onStart({type: petType, 
+            name: petName});
     }
+    
+
     return (
         <div className="pet-customizer">
             <h1 className="customizePetHeader">Choose Your Pet</h1>
@@ -25,7 +24,7 @@ function PetCustomizer() {
                 <div className='petNameSection'></div>
                 <p className='petNameLabel'>Enter your pet's name:</p>
                 <input type="text" id="pet-name" name="pet-name" className='petNameText' onChange={(e) => setPetName(e.target.value)} minLength={1} maxLength={20} />
-                <button type="submit" className='startGame'>Start Game</button>
+                <button type="submit" className='startGame' disabled={!petType || !petName}>Start Game</button>
             </form>
         </div>
     );

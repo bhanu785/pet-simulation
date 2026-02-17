@@ -1,13 +1,20 @@
 // this is the dashboard, it will have all the buttons and pet animations (from PetDisplay)
 
-import Idle from '../assets/spriteSheets/cat/Idle (5).png';
-const Dashboard = () => {
+import catIdle from '../assets/spriteSheets/cat/Idle (5).png';
+import dogIdle from '../assets/spriteSheets/dog/Idle (5).png';
+
+function Dashboard({ pet }) { // function that returns the dashboard page, takes in pet as a prop to display the pet info and animations
   return (
-    <div className="dashboard">
-      <h1>Welcome to the Dashboard</h1>
-      <p>This is where you can manage your tasks and view your progress.</p>
-      <img src={Idle} className='dashboardIdle' width={100} height={100} />
+    <div id='dashboard'>
+      <h1 className='dashboardWelcome'>{pet.name}</h1>
+      {pet.type === "Cat" ? <img src={catIdle} width={400} height={400} /> : <img src={dogIdle} width={400} height={400} />}
+      <p>Your pet type is {pet.type}</p>
+      <div id='petDisplay'></div>
+      <div id='buttons'></div>
+      <div id='statBars'></div>
+      <div id='shop'></div>
     </div>
   );
-};
+}
 export default Dashboard;
+// essentially everything goes into this component, will be similar to App.jsx
