@@ -10,3 +10,8 @@ import catWalk7 from '../assets/spriteSheets/cat/Walk (7).png';
 import catWalk8 from '../assets/spriteSheets/cat/Walk (8).png';
 import catWalk9 from '../assets/spriteSheets/cat/Walk (9).png';
 import catWalk10 from '../assets/spriteSheets/cat/Walk (10).png';
+function PetAnimation( { pet, animation }) {
+    const catWalk = [catWalk1, catWalk2, catWalk3, catWalk4, catWalk5, catWalk6, catWalk7, catWalk8, catWalk9, catWalk10];
+    const [currentFrame, setCurrentFrame] = useState(0);
+    
+}
