@@ -4,39 +4,314 @@
   padding: 2rem;
   text-align: center;
 }
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Pet customizer section */
+.customizePetHeader {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.choosePetLabel {
+  position: fixed;
+  top: 150px;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 30px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.catButton {
+  position: fixed;
+  top: 400px;
+  left: 13%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(56, 101, 135);
+  border: black solid 1px;
+  color: black;
+  font-size: 40px;
+  width: 300px;
+  height: 250px;
 }
 
-.card {
-  padding: 2em;
+.catButton:hover {
+  background-color: lightblue;
+  border: black solid 3px;
+
 }
 
-.read-the-docs {
-  color: #888;
+.catButton:focus {
+  border: black solid 5px;
+}
+
+.dogButton {
+  position: fixed;
+  top: 400px;
+  left: 37%;
+  transform: translate(-50%, -50%);
+  background-color: orange;
+  border: black solid 1px;
+  color: black;
+  font-size: 40px;
+  width: 300px;
+  height: 250px;
+}
+
+.dogButton:hover {
+  background-color: lightyellow;
+  border: black solid 3px;
+}
+
+.dogButton:focus {
+  border: black solid 5px;
+}
+
+.petNameLabel {
+  position: fixed;
+  top: 150px;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 30px;
+}
+
+.petNameText {
+  position: fixed;
+  top: 350px;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 40px;
+  background-color: white;
+  border: black solid 2px;
+  color: black;
+  width: 400px;
+  height: 45px;
+}
+
+.startGame {
+  position: fixed;
+  top: 700px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: lightgreen;
+  border: black solid 2px;
+  color: black;
+  width: 400px;
+  height: 100px;
+  font-size: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.startGame:hover {
+  background-color: rgb(194, 255, 194);
+  border: black solid 3px;
+}
+
+.petTypeSection {
+  position: fixed;
+  top: 360px;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 480px;
+  background-color: aqua;
+  border: black solid 2px;
+  border-radius: 75px;
+}
+
+.petNameSection {
+  position: fixed;
+  top: 360px;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 480px;
+  background-color: aqua;
+  border: black solid 2px;
+  border-radius: 75px;
+}
+
+/* Dashboard section */
+
+.dashboardIdle {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+}
+
+.dashboardWelcome {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dashboardCat {
+  position: absolute;
+  top: 400px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dashboardDog {
+  position: absolute;
+  top: 400px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.day-counter {
+  position: absolute;
+  bottom: 30px;
+  left: 500px;
+  font-size: 50px;
+}
+
+.feed-button {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  top: 500px;
+  left: 50px;
+  background-color: lightblue;
+  border: black solid 2px;
+  color: black;
+  width: 300px;
+  height: 100px;
+  font-size: 40px;
+}
+
+.feed-button:hover {
+  background-color: rgb(204, 232, 243);
+  border: black solid 3px;
+}
+
+.play-button {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  top: 320px;
+  left: 50px;
+  background-color: lightgreen;
+  border: black solid 2px;
+  color: black;
+  width: 300px;
+  height: 100px;
+  font-size: 40px;
+  gap: 30px;
+}
+
+.play-button:hover {
+  background-color: rgb(194, 255, 194);
+  border: black solid 3px;
+}
+
+.medicine-button {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  top: 320px;
+  right: 50px;
+  background-color: lightcoral;
+  border: black solid 2px;
+  color: black;
+  width: 300px;
+  height: 100px;
+  font-size: 40px;
+  gap: 20px;
+}
+
+.medicine-button:hover {
+  background-color: rgb(255, 182, 182);
+  border: black solid 3px;
+}
+
+.shop-button {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  top: 500px;
+  right: 50px;
+  background-color: lightyellow;
+  border: black solid 2px;
+  color: black;
+  width: 300px;
+  height: 100px;
+  font-size: 40px;
+}
+
+.shop-button:hover {
+  background-color: rgb(255, 255, 204);
+  border: black solid 3px;
+}
+
+.question-button {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  bottom: 50px;
+  right: 50px;
+  background-color: rgb(255, 255, 255);
+  border: black solid 2px;
+  color: black;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  border-radius: 50%;
+}
+
+/* shop section */
+.buy-food-button {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  top: 320px;
+  left: 50px;
+  background-color: lightblue;
+  border: black solid 2px;
+  color: black;
+  width: 300px;
+  height: 100px;
+  font-size: 40px;
+}
+
+/* status bar section */
+.stat-bar {
+  margin: 10px 0;
+  width: 300px;
+}
+
+.stat-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.stat-bar-background {
+  width: 100%;
+  height: 20px;
+  background-color: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.stat-bar-fill {
+  height: 100%;
+  background-color: limegreen;
+  transition: width 0.5s ease;
 }
