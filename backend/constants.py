@@ -1,0 +1,29 @@
+# where are all the constants go
+class StatusBarConstants:
+    MAX_STAT = 100
+    MIN_STAT = 0
+    CRITICAL_THRESHOLD = 70
+    CRITICAL_HUNGER_THRESHOLD = 30
+    HEALTH_DECAY_IF_CRITICAL = 10
+
+class ShopConstants:
+    TOY_PRICE = 8
+    FOOD_PRICE = 10
+    MEDICINE_PRICE = 15
+    TOY_HAPPINESS_INCREASE = 10
+    TOY_ENERGY_DECREASE = 10
+    FOOD_HUNGER_DECREASE = 10
+    FOOD_HEALTH_INCREASE = 10
+    MEDICINE_HEALTH_INCREASE = 20
+
+class DailyDecayConstants:
+    HAPPINESS_DECAY = 10
+    HUNGER_INCREASE = 10
+    ENERGY_DECAY = 10
+
+class MoneyConstants:
+    STARTING_MONEY = 50
+    MONEY_INCREASE_PER_DAY = 10
+
+
+
