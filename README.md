@@ -109,3 +109,36 @@ npm install
 npm run dev
 ```
 Frontend runs at: `http://localhost:5173/`
+
+
+⸻
+
+### Key Programming Concepts Demonstrated
+	-   Functions and modular design
+	-	Conditional logic
+	-	RESTful API structure
+	-	State management (useState, useEffect)
+	-	Input validation (syntactic and semantic)
+	-	File I/O using JSON
+	-	Defensive programming
+	-	Data structures using objects and models
+
+⸻
+
+### Input Validation
+
+The application prevents:
+	-	Using items without stock
+	-	Purchasing without enough money
+	-	Starting the game without valid pet name or type
+
+Validation is handled on both frontend and backend to ensure data integrity.
+
+⸻
+
+### Future Improvements
+	-	Add animations for pet reactions
+	-	Add difficulty levels
+	-	Replace JSON with a database
+	-	Add cloud save functionality
+	-	Improve mobile responsiveness
