@@ -52,10 +52,13 @@ def next_day():
     save_pet(pet)
     return pet
 
+# router posts to /pet/feed, and runs feed_pet() function when called by the frontend
 @router.post("/pet/feed")
 def feed_pet():
+    # raises exception if food stock is 0
     if pet.food_stock <= 0:
         raise HTTPException(status_code=400, detail="No food in stock")
+    # if there is food in stock, decrease hunger and food stock by 1
     pet.hunger = clamp(
         pet.hunger - ShopConstants.FOOD_HUNGER_DECREASE,
         StatusBarConstants.MIN_STAT,
@@ -63,6 +66,7 @@ def feed_pet():
     )
     pet.food_stock -= 1
 
+    # saves pet to pet_data.json and returns pet object to frontend to update state
     save_pet(pet)
     return pet
 
