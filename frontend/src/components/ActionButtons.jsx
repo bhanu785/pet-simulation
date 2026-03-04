@@ -45,7 +45,7 @@ function ActionButtons({ setPet, setScreen }) {
 
       <button onClick={() => handleAction("medicine")} className="medicine-button">
         <img src={medicine} width={40} height={75}/>
-        Medicine
+        Heal
       </button>
 
       <button className="shop-button" onClick={() => setScreen("shop")}>

@@ -27,7 +27,8 @@ def create_pet(type: str, name: str):
         money=MoneyConstants.STARTING_MONEY,
         food_stock=0,
         toy_stock=0,
-        medicine_stock=0
+        medicine_stock=0,
+        is_alive=True
     )
     global pet # updates every pet reference
     pet = new_pet
@@ -47,6 +48,9 @@ def next_day():
         pass
     else:
         pet.health = clamp(pet.health - StatusBarConstants.HEALTH_DECAY_IF_CRITICAL, StatusBarConstants.MIN_STAT, StatusBarConstants.MAX_STAT)
+    if pet.health <= 0:
+        pet.is_alive = False
+        pet.health = 0
     pet.money += MoneyConstants.MONEY_INCREASE_PER_DAY
 
     save_pet(pet)
@@ -130,5 +134,12 @@ def buy_medicine():
 
     pet.money -= ShopConstants.MEDICINE_PRICE
     pet.medicine_stock += 1
+    save_pet(pet)
+    return pet
+
+@router.post("/pet/reset")
+def reset_pet():
+    global pet
+    pet = Pet()
     save_pet(pet)
     return pet

@@ -1,1 +1,1 @@
-{"type": "Dog", "name": "r", "hunger": 100, "happiness": 0, "energy": 0, "health": 0, "day": 20, "money": 240, "food_stock": 0, "toy_stock": 0, "medicine_stock": 0}
+{"type": "Cat", "name": "Vishvak", "hunger": 0, "happiness": 100, "energy": 100, "health": 100, "day": 1, "money": 50, "food_stock": 0, "toy_stock": 0, "medicine_stock": 0, "is_alive": true}

@@ -11,7 +11,7 @@ function StatBar({ label, value, isReversed }) {
       <div className="stat-bar">
         <div className="stat-header">
           <span>{label}</span>
-          <span>{value}</span>
+          <span className="stat-value">{value}</span>
         </div>
   
         <div className="stat-bar-background">
