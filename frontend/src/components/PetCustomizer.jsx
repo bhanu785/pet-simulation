@@ -33,6 +33,14 @@ function PetCustomizer({ onStart }) { // pet customizer component, takes in onSt
           console.error("Error creating pet:", error);
         }
       }
+    //   function handleDisable() {
+    //     if (!petName || !petType) {
+    //         return alert("Please enter a name and select a pet type.");
+    //   }
+    //     else {
+    //         return false;
+    //     }
+    // }
     
     
 

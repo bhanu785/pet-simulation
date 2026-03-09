@@ -6,8 +6,40 @@ import StatBar from "./StatBar";
 
 function Dashboard({ setPet, pet, setScreen, isDying }) {
   const [isPaused, setIsPaused] = useState(false);
+  const [advice, setAdvice] = useState("");
+  const [advicePopup, setAdvicePopup] = useState(false);
+  const [lastAdviceDay, setLastAdviceDay] = useState(-1);
 
   // Day progression system
+  useEffect(() => {
+    if (!pet) return;
+  
+    // Prevent repeating hints every second
+    if (pet.day === lastAdviceDay) return;
+  
+    let message = "";
+  
+    if (pet.health < 50) {
+      message = "Your pet's health is low. Consider healing it!";
+    } 
+    else if (pet.energy < 30) {
+      message = "Your pet is exhausted. Feed it";
+    } 
+    else if (pet.happiness < 40) {
+      message = "Your pet is feeling down. Try playing with it!";
+    } 
+    else if (pet.hunger > 60) {
+      message = "Your pet is very hungry! Consider feeding it soon.";
+    }
+  
+    if (message !== "") {
+      setAdvice(message);
+      setAdvicePopup(true);
+      setLastAdviceDay(pet.day);
+    }
+  
+  }, [pet, lastAdviceDay]);
+
   useEffect(() => {
     let interval;
   
@@ -25,7 +57,7 @@ function Dashboard({ setPet, pet, setScreen, isDying }) {
         } catch (error) {
           console.error("Day update failed:", error);
         }
-      }, 1000);
+      }, 6000); // 10 seconds = 1 day (change for demo if needed)
     }
   
     return () => {
@@ -33,8 +65,6 @@ function Dashboard({ setPet, pet, setScreen, isDying }) {
     };
   
   }, [isDying, isPaused]);
-
-
 
   // Handle transition to Game Over
   useEffect(() => {
@@ -63,6 +93,8 @@ function Dashboard({ setPet, pet, setScreen, isDying }) {
   
     return "Idle";
   };
+
+
 
   return (
     <div id="dashboard">
@@ -107,7 +139,7 @@ function Dashboard({ setPet, pet, setScreen, isDying }) {
             <li>If health reaches 0, your pet dies.</li>
           </ul>
 
-          <button onClick={() => setIsPaused(false)}>
+          <button onClick={() => setIsPaused(false)} className="close-help-button">
             Close
           </button>
         </div>
@@ -117,6 +149,16 @@ function Dashboard({ setPet, pet, setScreen, isDying }) {
       <p className="food-display">Food: {pet.food_stock}</p>
       <p className="toy-display">Toys: {pet.toy_stock}</p>
       <p className="medicine-display">Medicine: {pet.medicine_stock}</p>
+
+      {advicePopup && (
+        <div className="hint-popup-overlay">
+            <div className="hint-popup">
+            <h3>Hint</h3>
+            <p>{advice}</p>
+            <button onClick={() => setAdvicePopup(false) && setIsPaused(false)} className="ok-button">OK</button>
+            </div>
+        </div>
+)}
     </div>
   );
 }

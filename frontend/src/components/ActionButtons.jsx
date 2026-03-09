@@ -4,10 +4,12 @@ import food from "../assets/pet_food.png";
 import toy from "../assets/pet_toy.png";
 import shop from "../assets/pet_shop.png";
 import medicine from "../assets/pet_medicine.png";
+import { useState } from "react";
 
 // function that shows all the buttons on the dashboard; takes in setPet and setScreen as props to update pet info and switch screens if needed
 function ActionButtons({ setPet, setScreen }) {
-
+    const [errorMessage, setErrorMessage] = useState("");
+    const [showPopup, setShowPopup] = useState(false);
     // function to get pet JSON data and update in the backend; takes in endpoint as an argument to determine which action to perform (feed, play, medicine)
     const handleAction = async (endpoint) => {
         try {
@@ -18,7 +20,8 @@ function ActionButtons({ setPet, setScreen }) {
           // if the response is not ok, show an alert with the error message and return
           if (!response.ok) {
             const error = await response.json();
-            alert(error.detail);
+            setErrorMessage(error.detail);
+            setShowPopup(true);
             return;
           }
           
@@ -56,6 +59,16 @@ function ActionButtons({ setPet, setScreen }) {
       <button onClick={() => window.open('https://forms.gle/qqNJnme3XWqzDhWR8', '_blank')} className="question-button">
         ?
       </button>
+
+      {showPopup && (
+        <div className="popup-overlay">
+            <div className="popup">
+            <h3>Error</h3>
+            <p>{errorMessage}</p>
+            <button onClick={() => setShowPopup(false)} className="ok-button">OK</button>
+            </div>
+        </div>
+)}
     </div>
   );
 }

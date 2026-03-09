@@ -4,6 +4,25 @@
   padding: 2rem;
   text-align: center;
 }
+
+@keyframes buttonIncrease{
+  from {
+    transform: scale(1, 1);
+  }
+  to {
+    transform: scale(1.05, 1.05);
+  }
+}
+
+@keyframes buttonDecrease{
+  from {
+    transform: scale(1.05, 1.05);
+  }
+  to {
+    transform: scale(1, 1);
+  }
+}
+
 /* Pet customizer section */
 .customizePetHeader {
   position: fixed;
@@ -25,10 +44,9 @@
 }
 
 .catButton {
-  position: fixed;
-  top: 400px;
-  left: 13%;
-  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 260px;
+  left: 40px;
   background-color: rgb(100, 160, 255);
   border: black solid 1px;
   color: black;
@@ -39,11 +57,13 @@
   height: 250px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
+  animation: buttonDecrease 0.5s forwards;
 }
 
 .catButton:hover {
   background-color: rgb(70, 130, 230);
   border: black solid 3px;
+  animation: buttonIncrease 0.5s forwards;
 
 }
 
@@ -53,8 +73,8 @@
 
 .dogButton {
   position: fixed;
-  top: 400px;
-  left: 37%;
+  top: 260px;
+  left: 380px;
   transform: translate(-50%, -50%);
   background-color: rgb(255, 190, 90);
   border: black solid 1px;
@@ -66,11 +86,13 @@
   height: 250px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
+  animation: buttonDecrease 0.5s forwards;
 }
 
 .dogButton:hover {
   background-color: rgb(235, 150, 50);
   border: black solid 3px;
+  animation: buttonIncrease 0.5s forwards;
 }
 
 .dogButton:focus-within {
@@ -102,11 +124,10 @@
 }
 
 .startGame {
-  position: fixed;
+  position: absolute;
   display: flex;
-  top: 700px;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 650px;
+  left: 525px;
   background-color: rgb(80, 220, 120);
   border: black solid 2px;
   color: black;
@@ -117,11 +138,13 @@
   align-items: center;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
+  animation: buttonDecrease 0.5s forwards;
 }
 
 .startGame:hover {
   background-color: rgb(50, 190, 95);
   border: black solid 3px;
+  animation: buttonIncrease 0.5s forwards;
 }
 
 .petTypeSection {
@@ -206,11 +229,13 @@
   font-size: 40px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
+  animation: buttonDecrease 0.5s forwards;
 }
 
 .feed-button:hover {
   background-color: rgb(93, 207, 252);
   border: black solid 3px;
+  animation: buttonIncrease 0.5s forwards;
 }
 
 .play-button {
@@ -230,11 +255,13 @@
   gap: 30px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
+  animation: buttonDecrease 0.5s forwards;
 }
 
 .play-button:hover {
   background-color: rgb(98, 246, 98);
   border: black solid 3px;
+  animation: buttonIncrease 0.5s forwards;
 }
 
 .medicine-button {
@@ -254,11 +281,13 @@
   gap: 30px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
+  animation: buttonDecrease 0.5s forwards;
 }
 
 .medicine-button:hover {
   background-color: rgb(255, 87, 87);
   border: black solid 3px;
+  animation: buttonIncrease 0.5s forwards;
 }
 
 .shop-button {
@@ -277,11 +306,13 @@
   font-size: 40px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   text-align: center;
+  animation: buttonDecrease 0.5s forwards;
 }
 
 .shop-button:hover {
   background-color: rgb(254, 254, 144);
   border: black solid 3px;
+  animation: buttonIncrease 0.5s forwards;
 }
 
 .question-button {
@@ -301,6 +332,11 @@
   border-radius: 50%;
 }
 
+.question-button:hover {
+  background-color: rgb(240, 240, 240);
+  animation: buttonIncrease 0.5s forwards;
+}
+
 .helpOverlay {
   position: fixed;
   top: 0;
@@ -311,7 +347,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
 }
 
 .helpBox {
@@ -331,6 +366,12 @@
   border: black solid 2px;
   color: black;
   font-size: 20px;
+}
+
+.help-button:hover {
+  background-color: rgb(93, 207, 252);
+  border: black solid 3px;
+  animation: buttonIncrease 0.5s forwards;
 }
 
 .money-display {
@@ -393,9 +434,107 @@
   flex-direction: column;
   gap: 15px;
   width: 60%;
+}
 
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 400px;
+  height: 200px;
+}
+
+.ok-button{
+  margin-top: 30px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: rgb(0, 0, 0);
+  border: black solid 2px;
+  color: rgb(255, 255, 255);
+  animation: buttonDecrease 0.5s forwards;
+}
+
+.ok-button:hover {
+  background-color: rgb(50, 50, 50);
+  animation: buttonIncrease 0.5s forwards;
+}
+
+.close-help-button {
+  margin-top: 30px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  animation: buttonDecrease 0.5s forwards;
+}
+
+.close-help-button:hover {
+  background-color: rgb(50, 50, 50);
+  animation: buttonIncrease 0.5s forwards;
+}
+
+.hint-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hint-popup {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 400px;
+  height: 200px;
+  font-size: 20px;
+}
+
+.shop-popup {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 400px;
+  height: 200px;
+  font-size: 20px;
 }
 /* shop section */
+.shop-title {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.money-title {
+  position: absolute;
+  font-family: 'Nunito', sans-serif !important;
+  top: 130px;
+  left: 725px;
+  transform: translate(-50%, -50%);
+  font-size: 60px;
+  color: black;
+}
+
 .buy-food-button {
   position: absolute;
   display: flex;
@@ -407,9 +546,183 @@
   background-color: lightblue;
   border: black solid 2px;
   color: black;
-  width: 300px;
-  height: 100px;
+  width: 400px;
+  height: 150px;
   font-size: 40px;
+  gap: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  animation: buttonDecrease 0.5s forwards;
+}
+
+.buy-food-button:hover {
+  background-color: rgb(93, 207, 252);
+  border: black solid 3px;
+  animation: buttonIncrease 0.5s forwards;
+
+}
+
+.buy-medicine-button {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  top: 320px;
+  right: 50px;
+  background-color: lightcoral;
+  border: black solid 2px;
+  color: black;
+  width: 400px;
+  height: 150px;
+  font-size: 40px;
+  gap: 30px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  animation: buttonDecrease 0.5s forwards;
+}
+
+.buy-medicine-button:hover {
+  background-color: rgb(255, 87, 87);
+  border: black solid 3px;
+  animation: buttonIncrease 0.5s forwards;
+}
+
+.buy-toy-button {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  top: 320px;
+  left: 525px;
+  background-color: lightgreen;
+  border: black solid 2px;
+  color: black;
+  width: 400px;
+  height: 150px;
+  font-size: 40px;
+  gap: 30px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  animation: buttonDecrease 0.5s forwards;
+}
+
+.buy-toy-button:hover {
+  background-color: rgb(98, 246, 98);
+  border: black solid 3px;
+  animation: buttonIncrease 0.5s forwards;
+}
+
+.back-image {
+  transform: scaleX(-1);
+}
+
+.back-button {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  top: 20px;
+  left: 35px;
+  background-color: lightgray;
+  border: black solid 2px;
+  color: black;
+  width: 100px;
+  height: 50px;
+  animation: buttonDecrease 0.5s forwards;
+}
+
+.back-button:hover {
+  background-color: rgb(200, 200, 200);
+  border: black solid 3px;
+  animation: buttonIncrease 0.5s forwards;
+}
+
+.food-stock-display {
+  position: absolute;
+  font-family: 'Nunito', sans-serif !important;
+  display: flex;
+  top: 430px;
+  left: 150px;
+  font-size: 50px;
+}
+
+.toy-stock-display
+  {
+    position: absolute;
+    font-family: 'Nunito', sans-serif !important;
+    display: flex;
+    top: 430px;
+    right: 630px;
+    font-size: 50px;
+  }
+
+.medicine-stock-display {
+    position: absolute;
+    font-family: 'Nunito', sans-serif !important;
+    display: flex;
+    top: 430px;
+    right: 150px;
+    font-size: 50px;
+  }
+
+.food-price {
+  position: absolute;
+  font-family: 'Nunito', sans-serif !important;
+  display: flex;
+  top: 530px;
+  left: 175px;
+  font-size: 30px;
+}
+
+.toy-price {
+  position: absolute;
+  font-family: 'Nunito', sans-serif !important;
+  display: flex;
+  top: 530px;
+  right: 660px;
+  font-size: 30px;
+}
+
+.medicine-price {
+  position: absolute;
+  font-family: 'Nunito', sans-serif !important;
+  display: flex;
+  top: 530px;
+  right: 175px;
+  font-size: 30px;
+}
+
+.money-spent {
+  position: absolute;
+  font-family: 'Nunito', sans-serif !important;
+  display: flex;
+  bottom: 5px;
+  left: 725px;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  color: black;
+}
+
+.shop-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shop-popup {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 400px;
+  height: 200px;
+  font-size: 20px;
 }
 
 /* status bar section */
@@ -442,4 +755,80 @@
   transition: width 0.3s ease;
   border-radius: 20px;
   box-shadow: 0 0 8px rgba(0,0,0,0.4);
+}
+
+/* game over section */
+.pet-died-heading {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.play-again-button {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  bottom: 75px;
+  left:570px;
+  background-color: lightblue;
+  border: black solid 2px;
+  color: black;
+  width: 300px;
+  height: 100px;
+  font-size: 40px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  animation: buttonDecrease 0.5s forwards;
+}
+
+.play-again-button:hover {
+  background-color: rgb(93, 207, 252);
+  border: black solid 3px;
+  animation: buttonIncrease 0.5s forwards;
+}
+
+.pet-day-display {
+  position: absolute;
+  display: flex;
+  top: 200px;
+  left: 750px;
+  font-size: 50px;
+  transform: translate(-50%, -50%);
+}
+
+.money-spent-display {
+  position: absolute;
+  display: flex;
+  top: 275px;
+  left: 700px;
+  font-size: 50px;
+  transform: translate(-50%, -50%);
+}
+
+.toy-purchased {
+  position: absolute;
+  display: flex;
+  top: 350px;
+  left: 750px;
+  font-size: 50px;
+  transform: translate(-50%, -50%);
+}
+
+.medicine-purchased {
+  position: absolute;
+  display: flex;
+  top: 425px;
+  left: 750px;
+  font-size: 50px;
+  transform: translate(-50%, -50%);
+}
+
+.food-purchased {
+  position: absolute;
+  display: flex;
+  top: 500px;
+  left: 750px;
+  font-size: 50px;
+  transform: translate(-50%, -50%);
 }
