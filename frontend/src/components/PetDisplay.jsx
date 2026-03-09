@@ -1,5 +1,5 @@
 // where the sprite sheets come into play; change based on variables such as hunger, happiness, etc.
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import catWalk1 from '../assets/spriteSheets/cat/Walk (1).png';
 import catWalk2 from '../assets/spriteSheets/cat/Walk (2).png';
 import catWalk3 from '../assets/spriteSheets/cat/Walk (3).png';
@@ -81,7 +81,6 @@ import catSlide7 from '../assets/spriteSheets/cat/Slide (7).png';
 import catSlide8 from '../assets/spriteSheets/cat/Slide (8).png';
 import catSlide9 from '../assets/spriteSheets/cat/Slide (9).png';
 import catSlide10 from '../assets/spriteSheets/cat/Slide (10).png';
-
 
 import dogWalk1 from '../assets/spriteSheets/dog/Walk (1).png';
 import dogWalk2 from '../assets/spriteSheets/dog/Walk (2).png';
@@ -185,46 +184,89 @@ const dogJump = [dogJump1, dogJump2, dogJump3, dogJump4, dogJump5, dogJump6, dog
 const dogRun = [dogRun1, dogRun2, dogRun3, dogRun4, dogRun5, dogRun6, dogRun7, dogRun8];
 const dogSlide = [dogSlide1, dogSlide2, dogSlide3, dogSlide4, dogSlide5, dogSlide6, dogSlide7, dogSlide8, dogSlide9, dogSlide10];
 
-const PetAnimation = ( { pet, animation }) => {
+// --- your sprite arrays stay exactly as you defined them ---
+// (I’m not rewriting them here since you already have them)
+
+const PetAnimation = ({ pet, animation }) => {
     const [currentFrame, setCurrentFrame] = useState(0);
-    const frames = getFrames(pet.type, animation);
+    const frames = getFrames(pet?.type, animation);
+    const animationRef = useRef(animation);
+
     useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentFrame((prevFrame) => (prevFrame + 1) % frames.length);
-        }, 100); // Change frame every 100ms
+        if (!frames || frames.length === 0) return;
+
+        let frameIndex = 0;
+        let interval;
+
+        // Reset frame if animation changed
+        if (animationRef.current !== animation) {
+            animationRef.current = animation;
+            setCurrentFrame(0);
+            frameIndex = 0;
+        }
+
+        // Dead animation (play once)
+        if (animation === "Dead") {
+            interval = setInterval(() => {
+                frameIndex++;
+
+                if (frameIndex >= frames.length) {
+                    clearInterval(interval);
+                    frameIndex = frames.length - 1; // freeze at last frame
+                }
+
+                setCurrentFrame(frameIndex);
+            }, 100);
+        }
+
+        // Other animations loop
+        else {
+            interval = setInterval(() => {
+                frameIndex = (frameIndex + 1) % frames.length;
+                setCurrentFrame(frameIndex);
+            }, 100);
+        }
+
         return () => clearInterval(interval);
+    }, [animation, frames]);
 
+    if (!pet) return null;
 
-    }, [frames]);
     return (
         <div>
-            <img src={frames[currentFrame]} alt={`${pet.type} ${animation}`} className='dashboardCat' />
+            <img
+                src={frames[currentFrame]}
+                alt={`${pet.type} ${animation}`}
+                className="dashboardCat"
+            />
         </div>
     );
-    
 };
 
-function getFrames(type, animation) {
-    if (type === 'Cat') {
-        if (animation === 'Walk') return catWalk;
-        if (animation === 'Idle') return catIdle;
-        if (animation === 'Fall') return catFall;
-        if (animation === 'Hurt') return catHurt;
-        if (animation === 'Dead') return catDead;
-        if (animation === 'Jump') return catJump;
-        if (animation === 'Run') return catRun;
-        if (animation === 'Slide') return catSlide;
-    }
-    if (type === 'Dog') {
-        if (animation === 'Walk') return dogWalk;
-        if (animation === 'Idle') return dogIdle;
-        if (animation === 'Fall') return dogFall;
-        if (animation === 'Hurt') return dogHurt;
-        if (animation === 'Dead') return dogDead;
-        if (animation === 'Jump') return dogJump;
-        if (animation === 'Run') return dogRun;
-        if (animation === 'Slide') return dogSlide;
-    }
-    return catWalk; // default
-}
 export default PetAnimation;
+
+function getFrames(type, animation) {
+    if (type === "Cat") {
+        if (animation === "Walk") return catWalk;
+        if (animation === "Idle") return catIdle;
+        if (animation === "Fall") return catFall;
+        if (animation === "Hurt") return catHurt;
+        if (animation === "Dead") return catDead;
+        if (animation === "Jump") return catJump;
+        if (animation === "Run") return catRun;
+        if (animation === "Slide") return catSlide;
+    }
+
+    if (type === "Dog") {
+        if (animation === "Walk") return dogWalk;
+        if (animation === "Idle") return dogIdle;
+        if (animation === "Fall") return dogFall;
+        if (animation === "Hurt") return dogHurt;
+        if (animation === "Dead") return dogDead;
+        if (animation === "Jump") return dogJump;
+        if (animation === "Run") return dogRun;
+        if (animation === "Slide") return dogSlide;
+    }
+
+    return catIdle; // default safe fallback
+}

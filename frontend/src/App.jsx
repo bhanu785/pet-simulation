@@ -4,10 +4,14 @@ import "./App.css";
 import PetCustomizer from "./components/PetCustomizer";
 import Dashboard from "./components/Dashboard";
 import Shop from "./components/Shop";
+import GameOver from "./components/GameOver";
 
 function App() {
   const [pet, setPet] = useState(null);
   const [screen, setScreen] = useState("customizer");
+
+  // Derived state (NOT useState)
+  const isDying = pet && pet.is_alive === false;
 
   return (
     <>
@@ -20,16 +24,34 @@ function App() {
         />
       )}
 
-      {screen === "dashboard" && (
+      {screen === "dashboard" && !isDying && (
         <Dashboard
+          pet={pet}
+          setPet={setPet}
+          setScreen={setScreen}
+          isDying={false}
+        />
+      )}
+
+      {screen === "dashboard" && isDying && (
+        <Dashboard
+          pet={pet}
+          setPet={setPet}
+          setScreen={setScreen}
+          isDying={true}
+        />
+      )}
+
+      {screen === "shop" && (
+        <Shop
           pet={pet}
           setPet={setPet}
           setScreen={setScreen}
         />
       )}
 
-      {screen === "shop" && (
-        <Shop
+      {screen === "gameover" && (
+        <GameOver
           pet={pet}
           setPet={setPet}
           setScreen={setScreen}

@@ -27,7 +27,12 @@ def create_pet(type: str, name: str):
         money=MoneyConstants.STARTING_MONEY,
         food_stock=0,
         toy_stock=0,
-        medicine_stock=0
+        medicine_stock=0,
+        is_alive=True,
+        money_spent=0,
+        total_food_purchased=0,
+        total_medicine_purchased=0,
+        total_toys_purchased=0
     )
     global pet # updates every pet reference
     pet = new_pet
@@ -47,6 +52,9 @@ def next_day():
         pass
     else:
         pet.health = clamp(pet.health - StatusBarConstants.HEALTH_DECAY_IF_CRITICAL, StatusBarConstants.MIN_STAT, StatusBarConstants.MAX_STAT)
+    if pet.health <= 0 or (pet.hunger >= 100 and pet.energy <= 0) or (pet.happiness <= 0 and pet.energy <= 0) or (pet.happiness <= 0 and pet.hunger >= 100):
+        pet.is_alive = False
+        pet.health = 0
     pet.money += MoneyConstants.MONEY_INCREASE_PER_DAY
 
     save_pet(pet)
@@ -64,6 +72,7 @@ def feed_pet():
         StatusBarConstants.MIN_STAT,
         StatusBarConstants.MAX_STAT
     )
+    pet.energy = clamp(pet.energy + ShopConstants.FOOD_ENERGY_INCREASE, StatusBarConstants.MIN_STAT, StatusBarConstants.MAX_STAT)
     pet.food_stock -= 1
 
     # saves pet to pet_data.json and returns pet object to frontend to update state
@@ -110,6 +119,8 @@ def buy_food():
 
     pet.money -= ShopConstants.FOOD_PRICE
     pet.food_stock += 1
+    pet.money_spent += ShopConstants.FOOD_PRICE # keeps track of money spent for end game stats
+    pet.total_food_purchased += 1
     save_pet(pet)
     return pet
 
@@ -120,6 +131,8 @@ def buy_toy():
 
     pet.money -= ShopConstants.TOY_PRICE
     pet.toy_stock += 1
+    pet.money_spent += ShopConstants.TOY_PRICE
+    pet.total_toys_purchased += 1
     save_pet(pet)
     return pet
 
@@ -130,5 +143,14 @@ def buy_medicine():
 
     pet.money -= ShopConstants.MEDICINE_PRICE
     pet.medicine_stock += 1
+    pet.money_spent += ShopConstants.MEDICINE_PRICE
+    pet.total_medicine_purchased += 1 
+    save_pet(pet)
+    return pet
+
+@router.post("/pet/reset")
+def reset_pet():
+    global pet
+    pet = Pet()
     save_pet(pet)
     return pet

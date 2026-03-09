@@ -25,7 +25,12 @@ def load_pet():
             money=MoneyConstants.STARTING_MONEY,
             food_stock=0,
             toy_stock=0,
-            medicine_stock=0
+            medicine_stock=0,
+            is_alive=True,
+            money_spent=0,
+            total_food_purchased=0,
+            total_medicine_purchased=0,
+            total_toys_purchased=0
         )
         save_pet(default_pet)
         return default_pet

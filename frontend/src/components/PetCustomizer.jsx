@@ -33,11 +33,19 @@ function PetCustomizer({ onStart }) { // pet customizer component, takes in onSt
           console.error("Error creating pet:", error);
         }
       }
+    //   function handleDisable() {
+    //     if (!petName || !petType) {
+    //         return alert("Please enter a name and select a pet type.");
+    //   }
+    //     else {
+    //         return false;
+    //     }
+    // }
     
     
 
     return (
-        <div className="pet-customizer">
+        <div className="background">
             <h1 className="customizePetHeader">PetLife: Legacy</h1>
             <form onSubmit={selectedPet}>
                 <div className='petTypeSection'></div>
@@ -46,8 +54,8 @@ function PetCustomizer({ onStart }) { // pet customizer component, takes in onSt
                 <button type="button" onClick={() => setPetType("Dog")} className='dogButton'><img src={dogIdle} width={150} height={150} />Dog</button>
                 <div className='petNameSection'></div>
                 <p className='petNameLabel'>Enter your pet's name:</p>
-                <input type="text" id="pet-name" name="pet-name" className='petNameText' onChange={(e) => setPetName(e.target.value)} minLength={1} maxLength={15} />
-                <button type="submit" className='startGame'>Start Game</button>
+                <input type="text" id="pet-name" name="pet-name" className='petNameText' onChange={(e) => setPetName(e.target.value)} minLength={1} maxLength={15} placeholder='Name' />
+                <button type="submit" className='startGame' disabled={!petName || !petType}>Start Game</button>
             </form>
         </div>
     );

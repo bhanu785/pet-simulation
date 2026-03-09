@@ -1,11 +1,11 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Nunito', sans-serif !important;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 500;
 
   color-scheme: light dark;
-  color: rgba(0, 0, 0, 0.87);
-  background-color: rgb(255, 255, 255);
+  color: rgb(60, 60, 60);
+  background-color: rgb(210, 245, 255);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,9 +15,11 @@
 
 h1 {
   /* position: relative; */
-  font-size: 3.2em;
+  font-family: 'Nunito', sans-serif !important;
+  font-weight: 900;
+  font-size: 4.5em;
   line-height: 1.1;
-  color:rgb(181, 19, 19);
+  color:rgb(43, 43, 43);
   /* top: 20px; */
 }
 
@@ -26,8 +28,8 @@ button {
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
+  font-weight: 700;
+  font-family: 'Nunito', sans-serif !important;
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
@@ -39,5 +41,5 @@ input {
   padding: 0.6em 1.2em;
   /* font-size: 1em; */
   font-weight: 400;
-  font-family: inherit;
+  font-family: 'Nunito', sans-serif !important;
 }
