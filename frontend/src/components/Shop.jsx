@@ -1,13 +1,16 @@
 // shop where toys, medicine and food can be bought; 
 // imports images from assets folder
+import useLanguage from "../useTranslation.js";
 import back from "../assets/pet_back.png";
 import food from "../assets/pet_food.png";
 import toy from "../assets/pet_toy.png";
 import medicine from "../assets/pet_medicine.png";
+
 import { useState } from "react";
 function Shop({ pet, setPet, setScreen }) {
     const [errorMessage, setErrorMessage] = useState("");
     const [errorPopup, setErrorPopup] = useState(false);
+    const { t } = useLanguage();
 
     // function to handle purchase of item, sends request to endpoint based on item
     const handlePurchase = async (item) => {
@@ -40,16 +43,16 @@ function Shop({ pet, setPet, setScreen }) {
     return (
       <div>
   
-        <h1 className="shop-title">Shop</h1>
+        <h1 className="shop-title">{t("shopTitle")}</h1>
   
-        <h2 className="money-title">Money: ${pet.money}</h2>
+        <h2 className="money-title">{t("money")}: ${pet.money}</h2>
   
           <div>
-            <p className="food-stock-display">Stock: {pet.food_stock}</p>
-            <p className="food-price">Price: $10</p>
+            <p className="food-stock-display">{t("stock")}: {pet.food_stock}</p>
+            <p className="food-price">{t("price")}: $10</p>
             <button onClick={() => handlePurchase("food")} className="buy-food-button">
               <img src={food} height={150} width={150}/>
-              Buy Food
+              {t("buyFood")}
             </button>
           </div>
   
@@ -58,7 +61,7 @@ function Shop({ pet, setPet, setScreen }) {
             <p className="toy-price">Price: $8</p>
             <button onClick={() => handlePurchase("toy")} className="buy-toy-button">
               <img src={toy} height={80} width={80}/>
-              Buy Toy
+              {t("buyToy")}
             </button>
           </div>
   
@@ -67,22 +70,22 @@ function Shop({ pet, setPet, setScreen }) {
             <p className="medicine-price">Price: $15</p>
             <button onClick={() => handlePurchase("medicine")} className="buy-medicine-button">
               <img src={medicine} width={50} height={94}/>
-              Buy Medicine
+              {t("buyMedicine")}
             </button>
           </div>
   
         <button onClick={() => setScreen("dashboard")} className="back-button">
           <img src={back} width={40} height={40} className="back-image" />
-          Back
+          {t("back")}
         </button>
-        <h2 className="money-spent">Total Money Spent: ${pet.money_spent}</h2>
+        <h2 className="money-spent">{t("totalMoneySpent")}: ${pet.money_spent}</h2>
 
         {errorPopup && (
         <div className="shop-popup-overlay">
             <div className="shop-popup">
-            <h3>Error</h3>
+            <h3>{t("error")}</h3>
             <p>{errorMessage}</p>
-            <button onClick={() => setErrorPopup(false)} className="ok-button">OK</button>
+            <button onClick={() => setErrorPopup(false)} className="ok-button">{t("ok")}</button>
             </div>
         </div>
 )}
