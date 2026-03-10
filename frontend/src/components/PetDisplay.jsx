@@ -166,9 +166,29 @@ import dogSlide10 from '../assets/spriteSheets/dog/Slide (10).png';
 
 
 
-const catWalk = [catWalk1, catWalk2, catWalk3, catWalk4, catWalk5, catWalk6, catWalk7, catWalk8, catWalk9, catWalk10];
+const catWalk = [
+    catWalk1, 
+    catWalk2, 
+    catWalk3, 
+    catWalk4, 
+    catWalk5, 
+    catWalk6, 
+    catWalk7, 
+    catWalk8, 
+    catWalk9, 
+    catWalk10];
 const catIdle = [catIdle1, catIdle2, catIdle3, catIdle4, catIdle5, catIdle6, catIdle7, catIdle8, catIdle9, catIdle10];
-const catFall = [catFall1, catFall2, catFall3, catFall4, catFall5, catFall6, catFall7, catFall8];
+
+const catFall = [
+    catFall1, 
+    catFall2, 
+    catFall3, 
+    catFall4, 
+    catFall5, 
+    catFall6, 
+    catFall7, 
+    catFall8];
+
 const catHurt = [catHurt1, catHurt2, catHurt3, catHurt4, catHurt5, catHurt6, catHurt7, catHurt8, catHurt9, catHurt10];
 const catDead = [catDead1, catDead2, catDead3, catDead4, catDead5, catDead6, catDead7, catDead8, catDead9, catDead10];
 const catJump = [catJump1, catJump2, catJump3, catJump4, catJump5, catJump6, catJump7, catJump8];

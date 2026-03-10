@@ -35,6 +35,7 @@ function GameOver({ pet, setPet, setScreen }) {
         <p className="toy-purchased">{t("totalToys")}: {pet.total_toys_purchased}</p>
         <p className="medicine-purchased">{t("totalMedicine")}: {pet.total_medicine_purchased}</p>
         <p className="food-purchased">{t("totalFood")}: {pet.total_food_purchased}</p>
+        <p className="died-reasons">Your pet died of hunger, consider feeding it more often next time</p>
         <button onClick={handleRestart} className="play-again-button">
             {t("playAgain")}
         </button>

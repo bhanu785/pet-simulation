@@ -10,7 +10,7 @@ function App() {
   const [pet, setPet] = useState(null);
   const [screen, setScreen] = useState("customizer");
 
-  // Derived state (NOT useState)
+
   const isDying = pet && pet.is_alive === false;
 
   return (
