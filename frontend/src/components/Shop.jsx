@@ -5,8 +5,8 @@ import back from "../assets/pet_back.png";
 import food from "../assets/pet_food.png";
 import toy from "../assets/pet_toy.png";
 import medicine from "../assets/pet_medicine.png";
-
 import { useState } from "react";
+
 function Shop({ pet, setPet, setScreen }) {
     const [errorMessage, setErrorMessage] = useState("");
     const [errorPopup, setErrorPopup] = useState(false);

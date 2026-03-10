@@ -33,8 +33,7 @@ function Dashboard({ setPet, pet, setScreen, isDying }) {
     if (message !== "") {
       setAdvice(message);
       setAdvicePopup(true);
-      setLastAdviceDay(pet.day);
-      setIsPaused(true); // pause game when showing hint
+      setLastAdviceDay(pet.day); // pause game when showing hint
     }
   }, [pet, lastAdviceDay, t]);
 

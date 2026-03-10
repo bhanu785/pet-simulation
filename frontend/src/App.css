@@ -518,9 +518,9 @@
   font-size: 20px;
 }
 
-/* Language selector container */
 .languageSelector {
   position: absolute;
+  display: flex;
   top: 20px;
   right: 25px;
   display: flex;
@@ -529,7 +529,7 @@
 }
 
 .languageLabel {
-  font-size: 16px;
+  font-size: 40px;
   font-weight: 600;
   color: rgb(0, 0, 0);
 }
@@ -538,11 +538,14 @@
   padding: 6px 10px;
   border-radius: 6px;
   border: none;
-  font-size: 14px;
+  font-size: 25px;
+  font-family: Nunito, sans-serif !important;
   cursor: pointer;
   background-color: rgb(176, 172, 172);
   color: black;
   transition: 0.2s ease;
+  width: 135px;
+  height: 50px;
 }
 
 .languageDropdown:hover {
@@ -806,7 +809,7 @@
   align-items: center;
   justify-content: center;
   padding: 15px;
-  bottom: 75px;
+  bottom: 50px;
   left:570px;
   background-color: lightblue;
   border: black solid 2px;
@@ -867,4 +870,13 @@
   left: 750px;
   font-size: 50px;
   transform: translate(-50%, -50%);
+}
+
+.died-reasons {
+  position: absolute;
+  top: 575px;
+  left: 750px;
+  font-size: 35px;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
 }
