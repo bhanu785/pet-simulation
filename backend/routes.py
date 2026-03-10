@@ -72,7 +72,9 @@ def feed_pet():
         StatusBarConstants.MIN_STAT,
         StatusBarConstants.MAX_STAT
     )
-    pet.energy = clamp(pet.energy + ShopConstants.FOOD_ENERGY_INCREASE, StatusBarConstants.MIN_STAT, StatusBarConstants.MAX_STAT)
+    pet.energy = clamp(
+        pet.energy + ShopConstants.FOOD_ENERGY_INCREASE, StatusBarConstants.MIN_STAT, StatusBarConstants.MAX_STAT
+        )
     pet.food_stock -= 1
 
     # saves pet to pet_data.json and returns pet object to frontend to update state

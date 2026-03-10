@@ -1,6 +1,8 @@
 // where the game over screen is rendered
-function GameOver({ pet, setPet, setScreen }) {
+import useLanguage from "../useTranslation.js";
 
+function GameOver({ pet, setPet, setScreen }) {
+    const { t } = useLanguage();
     // Handle restart by calling reset endpoint and updating pet state
     const handleRestart = async () => {
       try {
@@ -27,14 +29,14 @@ function GameOver({ pet, setPet, setScreen }) {
   
     return (
       <div className="game-over-screen">
-        <h1 className="pet-died-heading">Your Pet Has Passed Away</h1>
-        <p className="pet-day-display">Your pet lasted {pet.day} days</p>
-        <p className="money-spent-display">You spent ${pet.money_spent}</p>
-        <p className="toy-purchased">Total toys purchased: {pet.total_toys_purchased}</p>
-        <p className="medicine-purchased">Total medicine purchased: {pet.total_medicine_purchased}</p>
-        <p className="food-purchased">Total food purchased: {pet.total_food_purchased}</p>
+        <h1 className="pet-died-heading">{t("petDied")}</h1>
+        <p className="pet-day-display">{t("petLasted")} {pet.day} {t("daysText")}</p>
+        <p className="money-spent-display">{t("youSpent")} ${pet.money_spent}</p>
+        <p className="toy-purchased">{t("totalToys")}: {pet.total_toys_purchased}</p>
+        <p className="medicine-purchased">{t("totalMedicine")}: {pet.total_medicine_purchased}</p>
+        <p className="food-purchased">{t("totalFood")}: {pet.total_food_purchased}</p>
         <button onClick={handleRestart} className="play-again-button">
-          Play Again
+            {t("playAgain")}
         </button>
       </div>
     );
