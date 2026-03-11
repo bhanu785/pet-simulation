@@ -6,12 +6,12 @@ from state import Pet
 
 router = APIRouter()
 
+def clamp(value, min_value, max_value): # clamp function to make sure values don't go above or below certain thresholds
+    return max(min_value, min(value, max_value))
+
 @router.get("/pet")
 def get_pet():
     return pet
-
-def clamp(value, min_value, max_value): # clamp function to make sure values don't go above or below certain thresholds
-    return max(min_value, min(value, max_value))
 
 @router.post("/pet/create")
 def create_pet(type: str, name: str):
