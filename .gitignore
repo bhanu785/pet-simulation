@@ -16,3 +16,6 @@ venv/
 # Python virtual environments
 .env/
 .venv/
+
+# JSON file 
+pet_data.json
