@@ -54,7 +54,7 @@ function Dashboard({ setPet, pet, setScreen, isDying }) {
         } catch (error) {
           console.error("Day update failed:", error);
         }
-      }, 2500); // adjust day duration
+      }, 10000); // 10 secs = 1 day;
     }
 
     return () => {

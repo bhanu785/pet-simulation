@@ -1,19 +1,21 @@
 # PetLife: Legacy – Virtual Pet Simulation
 
+## Background Info
+This project was made for the 2026 Intro to Programming FBLA event.  After presenting this pet simulation, me and my team won 1st place and were selected to represent New Jersey in the National Leadership Conference in San Antonio, Texas.  This application is able to run on all modern browsers (Google, Firefox, Microsoft Edge, etc.)
+
 ## Overview
 
-PetVerse is a full-stack virtual pet simulation game built using **React (frontend)** and **FastAPI (backend)**.
+PetLife: Legacy is a full-stack virtual pet simulation built using **React (frontend)** and **FastAPI (backend)**.
 
 Users can create a custom pet, manage its stats, purchase items from a shop, and experience a time-based simulation where the pet’s needs change automatically over time.
 
 This project demonstrates:
 
 - Modular program structure
-- RESTful API communication
+- RESTful API communication (with HTTP requests)
 - State persistence using JSON
 - Input validation
 - Time-based stat updates
-- Separation of frontend and backend logic
 
 ---
 
@@ -53,14 +55,14 @@ Stats:
 
 ### Persistent Data Storage
 - Pet state is saved to `pet_data.json`
-- Data persists between sessions
-- Backend acts as the single source of truth
+- Data persists throughout the session
+- Backend acts as the single source of all data
 
 ---
 
-## Architecture Overview
+## Pipeline
 
-User Action  
+→ User Action  
 → React Component  
 → Fetch API Call  
 → FastAPI Route  
@@ -68,8 +70,6 @@ User Action
 → JSON Save  
 → Updated Response Returned  
 → Frontend State Update  
-
-This layered structure ensures modularity and maintainability.
 
 ---
 
@@ -86,7 +86,7 @@ This layered structure ensures modularity and maintainability.
 - Pydantic
 
 ### Data Storage
-- JSON file persistence
+- JSON files
 
 ---
 
@@ -110,19 +110,6 @@ npm run dev
 ```
 Frontend runs at: `http://localhost:5173/`
 
-
-⸻
-
-### Key Programming Concepts Demonstrated
-	-   Functions and modular design
-	-	Conditional logic
-	-	RESTful API structure
-	-	State management (useState, useEffect)
-	-	Input validation (syntactic and semantic)
-	-	File I/O using JSON
-	-	Defensive programming
-	-	Data structures using objects and models
-
 ⸻
 
 ### Input Validation
@@ -133,12 +120,3 @@ The application prevents:
 	-	Starting the game without valid pet name or type
 
 Validation is handled on both frontend and backend to ensure data integrity.
-
-⸻
-
-### Future Improvements
-	-	Add animations for pet reactions
-	-	Add difficulty levels
-	-	Replace JSON with a database
-	-	Add cloud save functionality
-	-	Improve mobile responsiveness
